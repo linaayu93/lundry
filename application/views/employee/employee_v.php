@@ -21,7 +21,12 @@
       <div class="container-fluid">
 
         <!-- Breadcrumbs-->
-  <?php $this->load->view("_layout/breadcrumb.php") ?>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="#">Dashboard</a>
+          </li>
+          <li class="breadcrumb-item active">Pegawai</li>
+        </ol>
 
         <!-- Icon Cards-->
 
@@ -30,39 +35,43 @@
         <!-- DataTables Example -->
         <div class="card mb-3">
           <div class="card-header">
-            <a href="<?php echo site_url('admin/paket/tambah') ?>"><i class="fas fa-plus"></i> Add New</a>
+            <a href="<?php echo site_url('employee/tambah') ?>"><i class="fas fa-plus"></i> Add New</a>
           </div>
           <div class="card-body">
             <div class="table-responsive">
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="20">
                 <thead>
                   <tr>
-                    <th>No Transaksi</th>
-                    <th>Pegawai</th>
-                    <th>Tanggal Masuk</th>
-                    <th>Tanggal Keluar</th>
+                    <th>Nama Pegawai</th>
+                    <th>Alamat</th>
+                    <th>Status</th>
+                    <th>Bagian</th>
+                    <th>Tanggal Masuk Kerja</th>
                     <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <?php foreach ($transaction as $tra): ?>
+                  <?php foreach ($employee as $e): ?>
                   <tr>
                     <td width="150">
-                      <?php echo $tra->no_tran ?>
+                      <?php echo $e->name ?>
                     </td>
                     <td>
-                      <?php echo $tra->member_name ?>
+                      <?php echo $e->address ?>
                     </td>
                     <td>
-                      <?php echo $tra->start_date ?>
+                      <?php echo $e->status ?>
                     </td>
                     <td>
-                      <?php echo $tra->end_date ?>
+                      <?php echo $e->position ?>
+                    </td>
+                    <td>
+                      <?php echo $e->start_date ?>
                     </td>
                     <td width="250">
-                      <a href="<?php echo site_url('admin/paket/edit/'.$tra->id_transaction) ?>"
+                      <a href="<?php echo site_url('employee/edit/'.$e->id_employee) ?>"
                        class="btn btn-small"><i class="fas fa-edit"></i> Edit</a>
-                      <a onclick="#"
+                      <a href="<?php echo site_url('employee/delete/'.$e->id_employee) ?>"
                         class="btn btn-small text-danger"><i class="fas fa-trash"></i> Hapus</a>
                     </td>
                   </tr>

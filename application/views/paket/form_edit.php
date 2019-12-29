@@ -35,30 +35,27 @@
         <?php endif; ?>
         <div class="card mb-3">
           <div class="card-header">
-            <a href="<?php echo site_url('admin/products/') ?>"><i class="fas fa-arrow-left"></i> Back</a>
+            <a href="<?php echo site_url('paket') ?>"><i class="fas fa-arrow-left"></i> Back</a>
             </div>
           <div class="card-body">
-            <form action="<?php echo site_url('admin/paket/tambah_aksi') ?>" method="post" enctype="multipart/form-data" >
+            <?php foreach($packet as $product){ ?>
+            <form action="<?php echo site_url('paket/update') ?>" method="post">
               <div class="form-group">
                 <label for="name">Name*</label>
-                <input class="form-control <?php echo form_error('name') ? 'is-invalid':'' ?>"
-                 type="text" name="name" placeholder="Nama Paket" />
-                <div class="invalid-feedback">
-                  <?php echo form_error('name') ?>
-                </div>
+                 <input type="hidden" name="packet_id" value="<?php echo $product->packet_id?>" />
+                <input class="form-control" type="text" name="name" placeholder="Product name" value="<?php echo $product->name ?>" />
+                
               </div>
 
               <div class="form-group">
-                <label for="price">Price*</label>
-                <input class="form-control <?php echo form_error('price') ? 'is-invalid':'' ?>"
-                 type="number" name="price" min="0" placeholder="Product price" />
-                <div class="invalid-feedback">
-                  <?php echo form_error('price') ?>
-                </div>
+                <label for="price">Price</label>
+                <input class="form-control" type="text" name="price" min="0" placeholder="Product price" value="<?php echo $product->price ?>" />
               </div>
 
               <input class="btn btn-success" type="submit" name="btn" value="Save" />
             </form>
+           <?php } ?>
+
           </div>
           <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
         </div>

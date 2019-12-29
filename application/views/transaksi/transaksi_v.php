@@ -37,30 +37,27 @@
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="20">
                 <thead>
                   <tr>
-                    <th>Nama Paket</th>
-                    <th>Harga</th>
+                    <th>No Transaksi</th>
+                    <th>Pegawai</th>
+                    <th>Tanggal Masuk</th>
+                    <th>Tanggal Keluar</th>
                     <th>Action</th>
                   </tr>
                 </thead>
-                <tfoot>
-                  <tr>
-                    <th>Name</th>
-                    <th>Position</th>
-                    <th>Office</th>
-                    
-                  </tr>
-                </tfoot>
                 <tbody>
-                  <?php foreach ($packet as $product): ?>
+                  <?php foreach ($transaction as $tra): ?>
                   <tr>
                     <td width="150">
-                      <?php echo $product->name ?>
+                      <?php echo $tra->no_tran ?>
                     </td>
                     <td>
-                      <?php echo $product->price ?>
+                      <?php echo $tra->start_date ?>
+                    </td>
+                    <td>
+                      <?php echo $tra->end_date ?>
                     </td>
                     <td width="250">
-                      <a href="<?php echo site_url('admin/paket/edit/'.$product->packet_id) ?>"
+                      <a href="<?php echo site_url('admin/paket/edit/'.$tra->id_transaction) ?>"
                        class="btn btn-small"><i class="fas fa-edit"></i> Edit</a>
                       <a onclick="#"
                         class="btn btn-small text-danger"><i class="fas fa-trash"></i> Hapus</a>

@@ -3,7 +3,7 @@
 class Transaksi_M extends CI_Model
 {
   function tampil_data(){
-        return $this->db->query('SELECT t.id_transaction, e.member_name, t.no_tran, t.start_date, t.end_date FROM employee e, transaction t WHERE e.nik=t.nik');
+        return $this->db->query('SELECT t.id_transaction, t.nik, t.no_tran, t.start_date, t.end_date FROM transaction t');
     }
     function input_data($data,$table){
         $this->db->insert($table,$data);

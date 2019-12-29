@@ -12,13 +12,12 @@ class Paket extends CI_Controller
     }
     function index(){
 		$data['packet'] = $this->paket_m->tampil_data()->result();
-		$this->load->view('admin/paket/paket_v',$data);
+		$this->load->view('paket/paket_v',$data);
 	}
 	function tambah(){
-		$this->load->view('admin/paket/new_form');
+		$this->load->view('paket/new_form');
 	}
 	function tambah_aksi(){
-		$id = $this->paket_id = uniqid();
 		$name = $this->input->post('name');
 		$price = $this->input->post('price');
  
@@ -30,12 +29,12 @@ class Paket extends CI_Controller
 		redirect('admin/paket/index');
 	}
 		function edit($id = null){
-		$where = array('paket_id' => $id);
+		$where = array('packet_id' => $id);
 		$data['packet'] = $this->paket_m->edit_data($where,'packet')->result();
-		$this->load->view('admin/paket/form_edit',$data);
+		$this->load->view('paket/form_edit',$data);
 	}
 		function update(){
-		$id = $this->input->post('paket_id');
+		$id = $this->input->post('packet_id');
 		$name = $this->input->post('name');
 		$price = $this->input->post('price');
 		
@@ -47,11 +46,11 @@ class Paket extends CI_Controller
 		);
 	 
 		$where = array(
-			'paket_id' => $id
+			'packet_id' => $id
 		);
 	 
 		$this->paket_m->update_data($where,$data,'packet');
-		redirect('admin/paket/index');
+		redirect('paket/index');
 	}
 
 }

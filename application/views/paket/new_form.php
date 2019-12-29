@@ -38,22 +38,23 @@
             <a href="<?php echo site_url('admin/products/') ?>"><i class="fas fa-arrow-left"></i> Back</a>
             </div>
           <div class="card-body">
-            <form action="<?php echo site_url('admin/paket/tambah_aksi') ?>" method="post" enctype="multipart/form-data" >
+            <form action="<?php echo site_url('paket/tambah_aksi') ?>" method="post" enctype="multipart/form-data" >
               <div class="form-group">
-                <label for="name">Paket*</label>
-                <select name="packet_id" class="form-control">
-                         <?php
-                          foreach ($packet as $k)
-                          {
-                              echo "<option value='$k->packet_id'>$k->name</option>";
-                          }
-                          ?>
-                </select>
+                <label for="name">Name*</label>
+                <input class="form-control <?php echo form_error('name') ? 'is-invalid':'' ?>"
+                 type="text" name="name" placeholder="Nama Paket" />
+                <div class="invalid-feedback">
+                  <?php echo form_error('name') ?>
+                </div>
               </div>
 
               <div class="form-group">
                 <label for="price">Price*</label>
-                <input class="form-control" type="number" name="price" min="0" placeholder="Product price" />
+                <input class="form-control <?php echo form_error('price') ? 'is-invalid':'' ?>"
+                 type="number" name="price" min="0" placeholder="Product price" />
+                <div class="invalid-feedback">
+                  <?php echo form_error('price') ?>
+                </div>
               </div>
 
               <input class="btn btn-success" type="submit" name="btn" value="Save" />

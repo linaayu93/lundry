@@ -38,26 +38,44 @@
             <a href="<?php echo site_url('admin/products/') ?>"><i class="fas fa-arrow-left"></i> Back</a>
             </div>
           <div class="card-body">
-            <?php foreach($packet as $product){ ?>
-            <form action="<?php echo site_url('admin/paket/update') ?>" method="post">
-              <div class="form-group">
-                <label for="name">Name*</label>
-                 <input type="hidden" name="paket_id" value="<?php echo $product->paket_id?>" />
-                <input class="form-control" type="text" name="name" placeholder="Product name" value="<?php echo $product->name ?>" />
+            <form action="<?php echo site_url('transaksi/tambah_aksi') ?>" method="post" enctype="multipart/form-data" >
+             <div class="row">
+              <div class="col-sm-6">
                 
+                <div class="form-group row">
+                  <label for="inputAddress" class="col-sm-2 col-form-label">No Transaksi</label>
+                  <div class="col-sm-10">
+                     <input type="text" class="form-control" id="inputAddress" name="no_tran" readonly value="<?php echo substr(uniqid(), 1,6); ?>" >
+                  </div>
+                </div>
+              
+                 <div class="form-group row">
+                  <label for="nik" class="col-sm-2 col-form-label">NIK</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="nik" name="nik" placeholder="Nik ">
+                  </div>
+                </div>
               </div>
+              <div class="col-sm-6">
+                <div class="form-group row">
+                  <label for="start_date" class="col-sm-2 col-form-label">Tanggal Masuk</label>
+                  <div class="col-sm-10">
+                    <input type="date" class="form-control" id="start_date" name="start_date">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="end_date" class="col-sm-2 col-form-label">Tanggal Keluar</label>
+                  <div class="col-sm-10">
+                    <input type="date" class="form-control" id="end_date" name="end_date">
+                  </div>
+                </div>
 
-              <div class="form-group">
-                <label for="price">Price</label>
-                <input class="form-control" type="text" name="price" min="0" placeholder="Product price" value="<?php echo $product->price ?>" />
               </div>
+             </div>
 
               <input class="btn btn-success" type="submit" name="btn" value="Save" />
             </form>
-           <?php } ?>
-
           </div>
-          <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
         </div>
 
       </div>

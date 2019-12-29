@@ -10,10 +10,10 @@ class Transaksi extends CI_Controller {
     }
      function index(){
 		$data['transaction'] = $this->transaksi_m->tampil_data()->result();
-		$this->load->view('admin/transaksi/transaksi_v',$data);
+		$this->load->view('transaksi/transaksi_v',$data);
 	}
     function tambah(){
-        $this->load->view('admin/transaksi/new_form');
+        $this->load->view('transaksi/new_form');
     }
     function tambah_aksi(){
         $no_tran = $this->input->post('no_tran');
@@ -28,6 +28,6 @@ class Transaksi extends CI_Controller {
             'end_date' => $end_date
             );
         $this->transaksi_m->input_data($data,'transaction');
-        redirect('admin/transaksi/index');
+        redirect('transaksi/index');
     }
 }
